@@ -1,0 +1,112 @@
+---
+// src/components/Menues.astro
+---
+
+<section id="menues" class="py-16 md:py-24 bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Encabezado -->
+        <div class="text-center mb-12 md:mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Nuestros Menúes
+            </h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+                Descubre nuestra variedad de lomitos y acompañamientos,
+                preparados con los mejores ingredientes.
+            </p>
+        </div>
+
+        <!-- Grid de Menúes -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Card 1: Lomitos Clásicos -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+                <img
+                    src="https://images.unsplash.com/photo-1606755456206-b25206cde27e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                    alt="Lomitos Clásicos"
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Lomitos Clásicos
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Los tradicionales que nos hicieron famosos. Carne
+                        jugosa, lechuga, tomate y mayonesa casera.
+                    </p>
+                    <a
+                        href="#"
+                        class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                    >
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Lomitos Gourmet -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+                <img
+                    src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                    alt="Lomitos Gourmet"
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Lomitos Gourmet
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Combinaciones únicas con ingredientes premium. Para los
+                        paladares más exigentes.
+                    </p>
+                    <a
+                        href="#"
+                        class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                    >
+                        Ver más
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Acompañamientos -->
+            <div
+                class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+                <img
+                    src="https://images.unsplash.com/photo-1610614819513-58e34989848b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                    alt="Acompañamientos"
+                    class="w-full h-48 object-cover"
+                    loading="lazy"
+                />
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                        Acompañamientos
+                    </h3>
+                    <p class="text-gray-600 mb-4">
+                        Papas fritas, batatas, ensaladas y más. El complemento
+                        perfecto para tu lomito.
+                    </p>
+                    <a
+                        href="#"
+                        class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+                    >
+                        Ver más
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón principal -->
+        <div class="text-center mt-12">
+            <a
+                href="/menues"
+                class="inline-block px-8 py-3 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+            >
+                Ver todos los menúes
+            </a>
+        </div>
+    </div>
+</section>
