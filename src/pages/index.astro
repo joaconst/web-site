@@ -2,28 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
-import QuienesSomos from "../components/QuienesSomos.astro";
-import Menues from "../components/Menus.astro";
-import Sucursales from "../components/Sucursales.astro";
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import About from "../components/About.astro";
+import Services from "../components/Services.astro";
+import Footer from '../components/Footer.astro'
 ---
 
 <Layout>
-  <html lang="es">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Landing Page</title>
-      <link href="/path/to/tailwind.css" rel="stylesheet" />
-    </head>
-    <body>
-      <Navbar />
-      <Hero />
-      <QuienesSomos />
-      <Menues />
-      <Sucursales />
-    </body>
-  </html>
+  <Navbar />
+  <Hero />
+  <About />
+  <Services />
+  <Footer />
 </Layout>

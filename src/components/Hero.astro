@@ -1,12 +1,11 @@
 ---
-// src/components/Hero.astro
+import "../styles/global.css";
 ---
 
 <section
   id="home"
   class="relative h-screen flex items-center justify-center overflow-hidden"
 >
-  <!-- Fondo con imagen -->
   <div class="absolute inset-0 z-0">
     <img
       src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
@@ -17,22 +16,25 @@
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
   </div>
 
-  <!-- Contenido del Hero -->
-  <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+  <div
+    class="relative z-10 text-center lg:text-left px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto"
+  >
     <h1
-      class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fadeInUp"
+      class="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 animate-fadeInUp"
     >
-      Bienvenidos a Nuestra Página
+      Welcome to the <span class="text-primary font-extrabold"
+        >"Digital World"</span
+      >
     </h1>
     <p class="text-lg sm:text-xl text-gray-200 mb-8 animate-fadeInUp delay-100">
-      Somos una empresa comprometida con ofrecerte la mejor experiencia.
-      Descubre nuestros servicios, menús exclusivos y sucursales cerca de ti.
+      We are a company committed to offering you the best experience. Explore
+      our services, both development and digital presence
     </p>
     <a
-      href="#contacto"
-      class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors animate-fadeInUp delay-200"
+      href="contact"
+      class="inline-block bg-secondary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary transition-colors animate-fadeInUp delay-100"
     >
-      Contáctanos
+      Contact
     </a>
   </div>
 </section>

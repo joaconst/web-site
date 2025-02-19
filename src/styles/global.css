@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primary: #AB886D;
+    --color-secondary: #D6C0B3;
+    --color-mate: #493628;
+    --color-ext: #E4E0E1;
+    --color-background: #F7F5F2;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}

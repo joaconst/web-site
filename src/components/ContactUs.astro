@@ -1,0 +1,129 @@
+<section id="contact" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-mate mb-4">
+                Contact Us
+            </h2>
+            <p
+                class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
+            >
+                Get in touch with us to discuss your digital needs and
+                learn how we can help your business grow.
+            </p>
+        </div>
+
+        <form
+            id="contactForm"
+            class="max-w-3xl mx-auto space-y-6 md:space-y-8"
+        >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label
+                        for="name"
+                        class="block text-mate font-medium mb-2"
+                    >
+                        Name
+                    </label>
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        placeholder="Your name"
+                        autocomplete="name"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                </div>
+                <div>
+                    <label
+                        for="email"
+                        class="block text-mate font-medium mb-2"
+                    >
+                        Email
+                    </label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Your email"
+                        autocomplete="email"
+                        class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    />
+                </div>
+            </div>
+
+            <div>
+                <label
+                    for="service"
+                    class="block text-mate font-medium mb-2"
+                >
+                    Service of Interest
+                </label>
+                <select
+                    id="service"
+                    name="service"
+                    required
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                >
+                    <option value="">Select a service</option>
+                    <option value="web-development"
+                        >Custom Web Development</option
+                    >
+                    <option value="branding"
+                        >Digital Presence and Branding</option
+                    >
+                    <option value="marketing"
+                        >Digital Marketing Strategy</option
+                    >
+                    <option value="seo">SEO and Positioning</option>
+                </select>
+            </div>
+
+            <div>
+                <label
+                    for="message"
+                    class="block text-mate font-medium mb-2"
+                >
+                    Message
+                </label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="Your message"
+                    class="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                ></textarea>
+            </div>
+
+            <div class="text-center">
+                <button
+                    type="submit"
+                    class="px-8 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
+                    Send Message
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById(
+            "contactForm",
+        ) as HTMLFormElement;
+        if (form) {
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const formData = new FormData(form);
+                console.log("Form Data:");
+                for (const [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+                alert("This is a demo form. No data is sent.");
+            });
+        }
+    });
+</script>
