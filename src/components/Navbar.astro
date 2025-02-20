@@ -50,45 +50,38 @@ const { lang = "en", ...attrs } = Astro.props;
         class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-mate"
       >
         <span class="sr-only">Open menu</span>
-        <svg
-          class="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
       </button>
     </div>
   </div>
 
   <div
     id="mobile-menu"
-    class="md:hidden absolute hidden w-full bg-white shadow-lg origin-top animate-fadeIn"
+    class="md:hidden absolute hidden w-full h-auto bg-background/80 rounded-b-lg overflow-hidden"
   >
     <div class="px-4 pt-2 pb-3 space-y-1">
       <a
         href="/index.html#home"
-        class="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
+        class="menu-item block px-3 py-2 text-gray-600 hover:bg-secondary/20 hover:text-primary rounded-md transition-all"
         >Home</a
       >
       <a
         href="/index.html#about"
-        class="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
+        class="menu-item block px-3 py-2 text-gray-600 hover:bg-secondary/20 hover:text-primary rounded-md transition-all"
         >About</a
       >
       <a
         href="/index.html#services"
-        class="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
+        class="menu-item block px-3 py-2 text-gray-600 hover:bg-secondary/20 hover:text-primary rounded-md transition-all"
         >Services</a
       >
       <a
         href="/contact"
-        class="block px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-md"
+        class="menu-item block px-3 py-2 text-gray-600 hover:bg-secondary/20 hover:text-primary rounded-md transition-all"
         >Contact</a
       >
     </div>
@@ -97,29 +90,53 @@ const { lang = "en", ...attrs } = Astro.props;
   <script is:inline>
     const mobileMenuButton = document.getElementById("mobile-menu-button");
     const mobileMenu = document.getElementById("mobile-menu");
+    const hamburgerIcon = mobileMenuButton.querySelector(".hamburger-icon");
+    let isAnimating = false;
 
     mobileMenuButton.addEventListener("click", (e) => {
       e.stopPropagation();
-      mobileMenu.classList.toggle("hidden");
-      mobileMenu.classList.toggle("block");
 
-      if (mobileMenu.classList.contains("block")) {
-        mobileMenu.style.animation = "fadeIn 0.3s ease-out";
+      hamburgerIcon.classList.toggle("active");
+
+      if (isAnimating) return;
+      isAnimating = true;
+
+      if (mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.remove("hidden");
+        mobileMenu.classList.add("menu-open");
+        mobileMenu.classList.remove("menu-close");
+
+        setTimeout(() => {
+          isAnimating = false;
+        }, 400);
       } else {
-        mobileMenu.style.animation = "fadeOut 0.3s ease-out";
+        mobileMenu.classList.add("menu-close");
+        mobileMenu.classList.remove("menu-open");
+
+        setTimeout(() => {
+          mobileMenu.classList.add("hidden");
+          isAnimating = false;
+        }, 300);
       }
     });
 
     document.addEventListener("click", (event) => {
       if (window.innerWidth < 768) {
-        if (mobileMenu.classList.contains("block")) {
+        if (!mobileMenu.classList.contains("hidden")) {
           if (
             !mobileMenu.contains(event.target) &&
-            !mobileMenuButton.contains(event.target)
+            !mobileMenuButton.contains(event.target) &&
+            !isAnimating
           ) {
-            mobileMenu.classList.remove("block");
-            mobileMenu.classList.add("hidden");
-            mobileMenu.style.animation = "fadeOut 0.3s ease-out";
+            hamburgerIcon.classList.remove("active");
+            isAnimating = true;
+            mobileMenu.classList.add("menu-close");
+            mobileMenu.classList.remove("menu-open");
+
+            setTimeout(() => {
+              mobileMenu.classList.add("hidden");
+              isAnimating = false;
+            }, 300);
           }
         }
       }
@@ -127,10 +144,17 @@ const { lang = "en", ...attrs } = Astro.props;
 
     document.querySelectorAll("#mobile-menu a").forEach((link) => {
       link.addEventListener("click", () => {
-        const mobileMenu = document.getElementById("mobile-menu");
-        mobileMenu.classList.remove("block");
-        mobileMenu.classList.add("hidden");
-        mobileMenu.style.animation = "fadeOut 0.3s ease-out";
+        if (isAnimating) return;
+        hamburgerIcon.classList.remove("active");
+        isAnimating = true;
+
+        mobileMenu.classList.add("menu-close");
+        mobileMenu.classList.remove("menu-open");
+
+        setTimeout(() => {
+          mobileMenu.classList.add("hidden");
+          isAnimating = false;
+        }, 300);
       });
     });
   </script>
@@ -146,6 +170,96 @@ const { lang = "en", ...attrs } = Astro.props;
     }
     .underline-hover:hover::after {
       width: 100%;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+      }
+    }
+
+    .menu-open {
+      animation: slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-close {
+      animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .menu-item {
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.2s ease;
+    }
+
+    .menu-open .menu-item:nth-child(1) {
+      animation: fadeItem 0.3s 0.05s forwards;
+    }
+    .menu-open .menu-item:nth-child(2) {
+      animation: fadeItem 0.3s 0.1s forwards;
+    }
+    .menu-open .menu-item:nth-child(3) {
+      animation: fadeItem 0.3s 0.15s forwards;
+    }
+    .menu-open .menu-item:nth-child(4) {
+      animation: fadeItem 0.3s 0.2s forwards;
+    }
+
+    @keyframes fadeItem {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .hamburger-icon {
+      width: 24px;
+      height: 18px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger-icon span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: currentColor;
+      border-radius: 4px;
+      transition:
+        transform 0.4s ease,
+        opacity 0.2s ease;
+    }
+
+    .hamburger-icon.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger-icon.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-icon.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
     }
   </style>
 </nav>
